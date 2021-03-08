@@ -1,6 +1,6 @@
 if(process.env.NODE_ENV !=='production') {
     require('dotenv').parse()
-    //this is going to load all the variables from our .env file and import htem into
+    //this is going to load all the variables from our .env file and import them into
     //our .process.env in our server.js 
 }
 
@@ -43,5 +43,6 @@ db.once('open', () => console.log('Connected to Mongoose'))
 app.use('/', indexRouter)
 
 //tell our app to listen to a certain port - for development we set this as default to port 3000
-app.listen(process.env.PORT || 3000)
-
+app.listen(process.env.PORT || 3000, function(){
+    console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
+  });
