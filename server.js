@@ -31,7 +31,7 @@ const mongoose = require('mongoose')
 //so we pass a string here that comes from our environment variables
 mongoose.connect(process.env.DATABASE_URL, { 
 useNewUrlParser: true,
-useUnifiedTopology:true
+useUnifiedTopology: true
 })
 
 const db = mongoose.connection
