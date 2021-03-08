@@ -46,6 +46,4 @@ db.once('open', () => {console.log('Connected to Mongoose')
 app.use('/', indexRouter);
 
 //tell our app to listen to a certain port - for development we set this as default to port 3000
-app.listen(process.env.PORT || 3000, function(){
-    console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
-  });
+app.listen(process.env.PORT || 3000);
