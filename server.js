@@ -7,9 +7,11 @@ if(process.env.NODE_ENV !=='production') {
 const express = require('express');
 const app = express();
 const expressLayouts = require('express-ejs-layouts');
+const bodyParser = require('body-parser');
 
 //Here we require the file with our newly created router 
 const indexRouter = require('./routes/index');
+const authorRouter = require('./routes/authors');
 
 //Set our view Engine - using ejs as our view engine
 app.set('view engine', 'ejs');
@@ -22,6 +24,7 @@ app.set('views', __dirname + '/views');
 app.set('layout', 'layouts/layout');
 app.use(expressLayouts);
 app.use(express.static('public'));
+app.use(bodyParser.urlencoded({ limit: '10mb', extended: false }));
 
 //import mongoose
 const mongoose = require('mongoose');
@@ -44,6 +47,7 @@ db.once('open', () => {console.log('Connected to Mongoose')
 
 //WE tell it the root path using is root path of our app '/' we tell our app to use the router we created
 app.use('/', indexRouter);
+app.use('/authors', authorRouter)
 
 //tell our app to listen to a certain port - for development we set this as default to port 3000
 app.listen(process.env.PORT || 3000);
