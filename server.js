@@ -1,5 +1,5 @@
 if(process.env.NODE_ENV !=='production') {
-    require('dotenv').parse()
+    require('dotenv').config()
     //this is going to load all the variables from our .env file and import them into
     //our .process.env in our server.js 
 }
