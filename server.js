@@ -30,7 +30,9 @@ const mongoose = require('mongoose')
 //mongoose to connect to your local Mongodb server but when you have your app deployed u want to connect to a server on the web somewhere
 //so we pass a string here that comes from our environment variables
 mongoose.connect(process.env.DATABASE_URL, { 
-useNewUrlParser: true})
+useNewUrlParser: true,
+useUnifiedTopology:true
+})
 
 const db = mongoose.connection
 //if we run into an error we pring the error out in our console
