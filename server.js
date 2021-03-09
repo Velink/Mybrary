@@ -12,6 +12,7 @@ const bodyParser = require('body-parser');
 //Here we require the file with our newly created router 
 const indexRouter = require('./routes/index');
 const authorRouter = require('./routes/authors');
+const bookRouter = require('./routes/books')
 
 //Set our view Engine - using ejs as our view engine
 app.set('view engine', 'ejs');
@@ -48,6 +49,7 @@ db.once('open', () => {console.log('Connected to Mongoose')
 //WE tell it the root path using is root path of our app '/' we tell our app to use the router we created
 app.use('/', indexRouter);
 app.use('/authors', authorRouter)
+app.use('/books', bookRouter)
 
 //tell our app to listen to a certain port - for development we set this as default to port 3000
 app.listen(process.env.PORT || 3000);
