@@ -13,6 +13,7 @@ const bodyParser = require('body-parser');
 const indexRouter = require('./routes/index');
 const authorRouter = require('./routes/authors');
 const bookRouter = require('./routes/books')
+const methodOverride = require('method-override')
 
 //Set our view Engine - using ejs as our view engine
 app.set('view engine', 'ejs');
@@ -24,8 +25,13 @@ app.set('views', __dirname + '/views');
 //file will be put in here so we don't have to duplicate every beginning and ending HTML file
 app.set('layout', 'layouts/layout');
 app.use(expressLayouts);
+
+app.use(methodOverride('_method'))
+
+
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ limit: '10mb', extended: false }));
+
 
 //import mongoose
 const mongoose = require('mongoose');

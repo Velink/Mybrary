@@ -1,0 +1,13 @@
+<h2>Edit Author</h2>
+
+<!-- We create a form - takes an action which is where our
+url goes to. Action tells us where to go to, and method we
+set to POST since in our route we set it to be a post route, 
+so we need to send a POST request to the server-->
+<form action="/authors/<%= author.id %>?_method=PUT" method="POST">
+
+    <%- include('_form_fields') %>
+
+  <a href="/authors/<%= author.id %>">Cancel</a>
+  <button type="submit">Update</button>
+</form>
